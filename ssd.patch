@@ -1,0 +1,25 @@
+From 4b7e8d08d77190820bc23aa3c7cc25ae10647671 Mon Sep 17 00:00:00 2001
+From: Aditya Garg <85610623+AdityaGarg8@users.noreply.github.com>
+Date: Mon, 17 Oct 2022 21:47:35 +0530
+Subject: [PATCH] Update pci.c
+
+---
+ drivers/nvme/host/pci.c | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/drivers/nvme/host/pci.c b/drivers/nvme/host/pci.c
+index bcbef6bc5672f0..76c76d998ec69a 100644
+--- a/drivers/nvme/host/pci.c
++++ b/drivers/nvme/host/pci.c
+@@ -3546,11 +3546,6 @@ static const struct pci_device_id nvme_id_table[] = {
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2001),
+ 		.driver_data = NVME_QUIRK_SINGLE_VECTOR },
+ 	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2003) },
+-	{ PCI_DEVICE(PCI_VENDOR_ID_APPLE, 0x2005),
+-		.driver_data = NVME_QUIRK_SINGLE_VECTOR |
+-				NVME_QUIRK_128_BYTES_SQES |
+-				NVME_QUIRK_SHARED_TAGS |
+-				NVME_QUIRK_SKIP_CID_GEN },
+ 	{ PCI_DEVICE_CLASS(PCI_CLASS_STORAGE_EXPRESS, 0xffffff) },
+ 	{ 0, }
+ };
