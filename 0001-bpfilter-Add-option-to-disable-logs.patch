@@ -1,0 +1,49 @@
+From 2a184241a5922ebd0fc724dd65b328d83a8ad282 Mon Sep 17 00:00:00 2001
+From: Aditya Garg <85610623+AdityaGarg8@users.noreply.github.com>
+Date: Mon, 12 Dec 2022 17:14:08 +0530
+Subject: [PATCH] bpfilter: Add option to disable logs
+
+---
+ net/bpfilter/bpfilter_kern.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/net/bpfilter/bpfilter_kern.c b/net/bpfilter/bpfilter_kern.c
+index 422ec6e7c..68d11a096 100644
+--- a/net/bpfilter/bpfilter_kern.c
++++ b/net/bpfilter/bpfilter_kern.c
+@@ -13,6 +13,11 @@
+ extern char bpfilter_umh_start;
+ extern char bpfilter_umh_end;
+ 
++static unsigned int no_logs;
++module_param(no_logs, uint, 0644);
++MODULE_PARM_DESC(no_logs, "Disable read/write errors from being displayed. "
++		"([0] = Logs are enabled, 1 = Logs are disabled)");
++
+ static void shutdown_umh(void)
+ {
+ 	struct umd_info *info = &bpfilter_ops.info;
+@@ -43,14 +48,18 @@ static int bpfilter_send_req(struct mbox_request *req)
+ 	n = kernel_write(bpfilter_ops.info.pipe_to_umh, req, sizeof(*req),
+ 			   &pos);
+ 	if (n != sizeof(*req)) {
+-		pr_err("write fail %zd\n", n);
++		if (!no_logs) {
++			pr_err("write fail %zd\n", n);
++		}
+ 		goto stop;
+ 	}
+ 	pos = 0;
+ 	n = kernel_read(bpfilter_ops.info.pipe_from_umh, &reply, sizeof(reply),
+ 			&pos);
+ 	if (n != sizeof(reply)) {
+-		pr_err("read fail %zd\n", n);
++		if (!no_logs) {
++			pr_err("read fail %zd\n", n);
++		}
+ 		goto stop;
+ 	}
+ 	return reply.status;
+-- 
+2.38.1
+
