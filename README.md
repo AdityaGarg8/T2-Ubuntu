@@ -1,6 +1,6 @@
-**REPOSITORY ARCHIVED
+**REPOSITORY ARCHIVED**
 
-THIS REPOSITORY HAS BEEN ARCHIVED SINCE NOW I AM MAINTAINING [t2linux/T2-Ubuntu](https://github.com/t2linux/T2-Ubuntu).**
+**THIS REPOSITORY HAS BEEN ARCHIVED SINCE NOW I AM MAINTAINING [t2linux/T2-Ubuntu](https://github.com/t2linux/T2-Ubuntu).**
 
 
 # T2-Ubuntu
