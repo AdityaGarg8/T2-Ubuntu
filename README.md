@@ -1,3 +1,8 @@
+**REPOSITORY ARCHIVED
+
+THIS REPOSITORY HAS BEEN ARCHIVED SINCE NOW I AM MAINTAINING [t2linux/T2-Ubuntu](https://github.com/t2linux/T2-Ubuntu).**
+
+
 # T2-Ubuntu
 
 The ISOs from this repo should allow you to install Ubuntu without using an external keyboard or mouse on a T2 Mac. It works in my MacBook Pro 16 inch, 2019.
